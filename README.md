@@ -31,6 +31,9 @@ Event Flow:
 7. Metadata processing Lambda publishes a success notification to SNS.
 8. User receives an email notification.
 
+Monitoring and Logging:
+Amazon CloudWatch Logs is used to monitor Lambda execution, debug failures, and trace the event-driven workflow throughout the pipeline.
+
 Screenshots:
 
 
