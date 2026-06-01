@@ -36,6 +36,8 @@ Event Flow:
 Monitoring and Logging:
 Amazon CloudWatch Logs is used to monitor Lambda execution, debug failures, and trace the event-driven workflow throughout the pipeline.
 
+To control operational costs, log retention is confifured for 7 days instead of keeping logs indefinitely.
+
 
 Failure Handling:
 The architecture includes a Dead Letter Queue (DLQ) for failed SQS messages. If a document metadata message cannot be processed after multiple attempts (set to 3), it is moved to the DLQ for later inspection and troubleshooting.
