@@ -19,7 +19,25 @@ Current Implementation:
 - CloudWatch Logs for monitoring and debugging
 
 
+Architecture Highlights:
+
+- Event-driven serverless architecture
+- Decoupled processing using Amazon SQS
+- Automatic scaling through AWS Lambda
+- Metadata persistence with DynamoDB
+- SNS-based notification system
+- CloudWatch monitoring and logging
+- Dead Letter Queue (DLQ) for failure handling
+- Cost-optimized serverless design
+
+
 AWS Services Used:
+1. S3
+2. Lambda
+3. SQS
+4. DynamoDB
+5. SNS
+6. CloudWatch
 
 
 Event Flow:
@@ -71,14 +89,3 @@ Metadata Processing Lambda
 
 This reduces the attack surface and follows AWS security best practices.
 
-
-Setup Instructions:
-
-
-Features:
-
-
-Future Improvements:
-
-
-Lessons Learned:
