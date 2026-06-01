@@ -41,8 +41,17 @@ Failure Handling:
 The architecture includes a Dead Letter Queue (DLQ) for failed SQS messages. If a document metadata message cannot be processed after multiple attempts (set to 3), it is moved to the DLQ for later inspection and troubleshooting.
 
 
-Screenshots:
+Cost Optimizations:
+This project was designed to minimize AWS costs by using serverless and pay-per-use services.
 
+Cost-control measures:
+- S3 is used only for small test documents.
+- Lambda functions run only when triggered.
+- SQS is used with small test messages.
+- DynamoDB uses on-demand capacity.
+- SNS uses email notifications only.
+- CloudWatch Logs are used for debugging and can be configured with short retention.
+- Resources can be deleted after testing while preserving code, diagrams, and screenshots in GitHub.
 
 Setup Instructions:
 
