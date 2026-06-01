@@ -38,7 +38,7 @@ Amazon CloudWatch Logs is used to monitor Lambda execution, debug failures, and 
 
 
 Failure Handling:
-The architecture includes a Dead Letter Queue (DLQ) for failed SQS messages. If a document metadata message cannot be processed after multiple attempts, it is moved to the DLQ for later inspection and troubleshooting.
+The architecture includes a Dead Letter Queue (DLQ) for failed SQS messages. If a document metadata message cannot be processed after multiple attempts (set to 3), it is moved to the DLQ for later inspection and troubleshooting.
 
 
 Screenshots:
