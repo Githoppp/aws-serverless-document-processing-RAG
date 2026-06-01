@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-21" parent="1" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=light-dark(#AAB7B8,#000000);fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#AAB7B8;dashed=1;dashPattern=8 8;" value="AWS Cloud" vertex="1">
-          <mxGeometry height="387" width="920" x="943" y="154" as="geometry" />
+          <mxGeometry height="387" width="931" x="943" y="154" as="geometry" />
         </mxCell>
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-9" edge="1" parent="1" source="7Pc3wMH7u8ludDjox7_M-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#000000);" target="7Pc3wMH7u8ludDjox7_M-4" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -15,7 +15,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="7Pc3wMH7u8ludDjox7_M-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#000000,#000000);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Web Client&lt;/font&gt;" vertex="1">
+        <mxCell id="7Pc3wMH7u8ludDjox7_M-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#000000,#000000);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;User / Client Application&lt;/font&gt;" vertex="1">
           <mxGeometry height="79" width="80" x="857" y="147" as="geometry" />
         </mxCell>
         <mxCell id="7Pc3wMH7u8ludDjox7_M-4" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;S3&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
@@ -69,10 +69,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-14" parent="1" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.dynamo_db;fillColor=#2E73B8;gradientColor=none;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;DynamoDB&lt;/font&gt;" vertex="1">
-          <mxGeometry height="81" width="72" x="1695" y="295.5" as="geometry" />
+          <mxGeometry height="81" width="72" x="1788" y="295.5" as="geometry" />
         </mxCell>
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-25" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" value="&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Metadata Processing Lambda&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="78" width="78" x="1497" y="297" as="geometry" />
+          <mxGeometry height="78" width="78" x="1598" y="297" as="geometry" />
         </mxCell>
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-40" edge="1" parent="1" source="uKWtjTb5jn3VYm_yCgdv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=light-dark(#000000,#000000);" target="uKWtjTb5jn3VYm_yCgdv-25">
           <mxGeometry relative="1" as="geometry" />
@@ -94,7 +94,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="uKWtjTb5jn3VYm_yCgdv-7" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;SQS&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="78" width="78" x="1257" y="297" as="geometry" />
+          <mxGeometry height="78" width="78" x="1356" y="297" as="geometry" />
         </mxCell>
         <mxCell id="FuY0T56HONXRKGZNqui2-1" parent="1" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.cloudwatch;fillColor=#759C3E;gradientColor=none;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;CloudWatch Logs&lt;/font&gt;" vertex="1">
           <mxGeometry height="93" width="82.5" x="1196" y="162" as="geometry" />
@@ -102,7 +102,7 @@
         <mxCell id="FuY0T56HONXRKGZNqui2-10" edge="1" parent="1" source="uKWtjTb5jn3VYm_yCgdv-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;strokeColor=light-dark(#000000,#000000);" target="FuY0T56HONXRKGZNqui2-1" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1536" y="187" />
+              <mxPoint x="1637" y="187" />
             </Array>
             <mxPoint x="1507" y="263" as="sourcePoint" />
             <mxPoint x="1688" y="207" as="targetPoint" />
@@ -114,7 +114,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="QxZlqeRCSuuaIz278ht0-1" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Dead Letter Queue (DLQ)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="78" width="78" x="1572" y="183" as="geometry" />
+          <mxGeometry height="78" width="78" x="1701" y="185" as="geometry" />
         </mxCell>
         <mxCell id="QxZlqeRCSuuaIz278ht0-7" edge="1" parent="1" source="uKWtjTb5jn3VYm_yCgdv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;strokeColor=light-dark(#000000,#000000);" target="FuY0T56HONXRKGZNqui2-1" value="">
           <mxGeometry relative="1" as="geometry">
@@ -136,7 +136,7 @@
         </mxCell>
         <mxCell id="QxZlqeRCSuuaIz278ht0-11" connectable="0" parent="QxZlqeRCSuuaIz278ht0-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Failed Messages after 3 tries&lt;/font&gt;" vertex="1">
           <mxGeometry relative="1" x="0.3135" as="geometry">
-            <mxPoint x="2" y="-13" as="offset" />
+            <mxPoint x="-47" y="-13" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
