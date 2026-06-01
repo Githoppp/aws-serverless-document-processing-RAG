@@ -114,7 +114,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="QxZlqeRCSuuaIz278ht0-1" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Dead Letter Queue (DLQ)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="78" width="78" x="1407" y="193" as="geometry" />
+          <mxGeometry height="78" width="78" x="1572" y="183" as="geometry" />
         </mxCell>
         <mxCell id="QxZlqeRCSuuaIz278ht0-7" edge="1" parent="1" source="uKWtjTb5jn3VYm_yCgdv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;strokeColor=light-dark(#000000,#000000);" target="FuY0T56HONXRKGZNqui2-1" value="">
           <mxGeometry relative="1" as="geometry">
@@ -134,7 +134,7 @@
         <mxCell id="QxZlqeRCSuuaIz278ht0-10" edge="1" parent="1" source="uKWtjTb5jn3VYm_yCgdv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=light-dark(#000000,#000000);" target="QxZlqeRCSuuaIz278ht0-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="QxZlqeRCSuuaIz278ht0-11" connectable="0" parent="QxZlqeRCSuuaIz278ht0-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Failed Messages&lt;/font&gt;" vertex="1">
+        <mxCell id="QxZlqeRCSuuaIz278ht0-11" connectable="0" parent="QxZlqeRCSuuaIz278ht0-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Failed Messages after 3 tries&lt;/font&gt;" vertex="1">
           <mxGeometry relative="1" x="0.3135" as="geometry">
             <mxPoint x="2" y="-13" as="offset" />
           </mxGeometry>
