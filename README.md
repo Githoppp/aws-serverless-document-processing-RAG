@@ -53,6 +53,23 @@ Cost-control measures:
 - CloudWatch Logs are used for debugging and can be configured with short retention.
 - Resources can be deleted after testing while preserving code, diagrams, and screenshots in GitHub.
 
+
+Security Considerations:
+During development, AWS managed policies were used to simplify setup and testing.
+
+For production deployments, least-privilege IAM policies should be implemented:
+Upload Lambda
+- Read access to the S3 upload bucket
+- SendMessage permission to the SQS queue
+
+Metadata Processing Lambda
+- Receive/DeleteMessage permission from SQS
+- PutItem permission to the DynamoDB table
+- Publish permission to the SNS topic
+
+This reduces the attack surface and follows AWS security best practices.
+
+
 Setup Instructions:
 
 
