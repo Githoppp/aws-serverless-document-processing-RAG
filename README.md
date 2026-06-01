@@ -7,6 +7,7 @@ Project Overview:
 
 
 Architecture:
+The Phase 1 architecture uses an event-driven serverless workflow where Amazon S3 triggers a Lambda function after document upload. The upload Lambda sends document metadata to SQS, which decouples ingestion from processing. A second Lambda processes the queue message, stores metadata in DynamoDB, and publishes a success notification through SNS.
 
 
 Current Implementation:
@@ -35,6 +36,7 @@ AWS Services Used:
 1. S3
 2. Lambda
 3. SQS
+4. SQS Dead Letter Queue
 4. DynamoDB
 5. SNS
 6. CloudWatch
@@ -54,14 +56,14 @@ Event Flow:
 Monitoring and Logging:
 Amazon CloudWatch Logs is used to monitor Lambda execution, debug failures, and trace the event-driven workflow throughout the pipeline.
 
-To control operational costs, log retention is confifured for 7 days instead of keeping logs indefinitely.
+To control operational costs, log retention is configured for 7 days instead of keeping logs indefinitely.
 
 
 Failure Handling:
 The architecture includes a Dead Letter Queue (DLQ) for failed SQS messages. If a document metadata message cannot be processed after multiple attempts (set to 3), it is moved to the DLQ for later inspection and troubleshooting.
 
 
-Cost Optimizations:
+Cost Optimization:
 This project was designed to minimize AWS costs by using serverless and pay-per-use services.
 
 Cost-control measures:
