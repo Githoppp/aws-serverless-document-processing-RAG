@@ -3,6 +3,7 @@ This project implements a serverless, event-driven document processing pipeline 
 
 The project is designed as the foundation for a future AI-powered document processing and RAG system.
 
+
 Project Overview:
 
 
@@ -51,6 +52,14 @@ Event Flow:
 6. Metadata processing Lambda stores metadata in DynamoDB.
 7. Metadata processing Lambda publishes a success notification to SNS.
 8. User receives an email notification.
+
+
+The Metadata Processing Lambda was extended to perform:
+- Textract extraction
+- Bedrock summarization
+- Bedrock classification
+- DynamoDB storage
+- SNS notification
 
 
 Monitoring and Logging:
