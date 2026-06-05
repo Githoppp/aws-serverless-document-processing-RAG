@@ -8,6 +8,9 @@ import boto3
 dynamodb = boto3.resource("dynamodb")
 sns = boto3.client("sns")
 
+# For phase-2
+textract = boto3.client("textract")
+
 TABLE_NAME = os.environ["TABLE_NAME"]
 SNS_TOPIC_ARN = os.environ["SNS_TOPIC_ARN"]
 
@@ -32,6 +35,27 @@ def lambda_handler(event, context):
         }
 
         table.put_item(Item=item)
+
+        print("Bucket:", message["bucket_name"])
+        print("Object:", message["object_key"])
+
+        textract_response = textract.detect_document_text(
+            Document={
+                "S3Object": {
+                    "Bucket": message["bucket_name"],
+                    "Name": message["object_key"]
+                }
+            }
+        )
+
+        extracted_text = ""
+
+        for block in textract_response["Blocks"]:
+            if block["BlockType"] == "LINE":
+                extracted_text += block["Text"] + "\n"
+
+        print("Extracted text from Textract:")
+        print(extracted_text)
 
         sns.publish(
             TopicArn=SNS_TOPIC_ARN,
