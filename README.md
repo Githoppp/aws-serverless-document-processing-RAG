@@ -6,6 +6,18 @@ This project implements an end-to-end serverless AI document processing and Retr
 
 The platform allows users to upload documents to Amazon S3, automatically extract and process document contents using Amazon Textract and Amazon Bedrock, generate AI-powered summaries and classifications, build vector embeddings using Amazon Titan Embeddings, store embeddings in a FAISS vector index, and answer natural language questions about uploaded documents using Retrieval-Augmented Generation (RAG).
 
+## Key Features
+
+- Event-driven serverless architecture
+- OCR-based document text extraction using Amazon Textract
+- AI-powered document summarization and classification using Amazon Bedrock
+- Vector embedding generation using Amazon Titan Embeddings V2
+- Semantic search using FAISS
+- Retrieval-Augmented Generation (RAG) question answering
+- Monitoring and debugging with CloudWatch
+- Dead Letter Queue (DLQ) for fault tolerance
+- Cost-optimized, pay-per-use architecture
+
 The project was developed incrementally in three phases:
 
 * **Phase 1:** Event-Driven Serverless Document Processing
