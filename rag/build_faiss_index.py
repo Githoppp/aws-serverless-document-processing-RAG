@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 
 import boto3
@@ -10,12 +9,15 @@ import numpy as np
 AWS_REGION = "us-east-1"
 S3_BUCKET_NAME = "rustom-serverless-doc-processing-2026"
 
+PROCESSED_TEXT_PREFIX = "processed_text/"
+FAISS_INDEX_S3_KEY = "faiss_index/index.faiss"
+METADATA_S3_KEY = "faiss_index/metadata.json"
+
 FAISS_FOLDER = Path("faiss")
 FAISS_INDEX_PATH = FAISS_FOLDER / "index.faiss"
 METADATA_PATH = FAISS_FOLDER / "metadata.json"
 
 BEDROCK_EMBEDDING_MODEL_ID = "amazon.titan-embed-text-v2:0"
-
 
 bedrock = boto3.client("bedrock-runtime", region_name=AWS_REGION)
 s3 = boto3.client("s3", region_name=AWS_REGION)
@@ -38,9 +40,7 @@ def chunk_text(text, chunk_size=500, chunk_overlap=100):
 
 
 def get_embedding(text):
-    body = {
-        "inputText": text
-    }
+    body = {"inputText": text}
 
     response = bedrock.invoke_model(
         modelId=BEDROCK_EMBEDDING_MODEL_ID,
@@ -51,30 +51,73 @@ def get_embedding(text):
     return response_body["embedding"]
 
 
-def build_faiss_index(chunks, document_id, object_key):
-    embeddings = []
-    metadata = []
+def list_processed_text_files():
+    response = s3.list_objects_v2(
+        Bucket=S3_BUCKET_NAME,
+        Prefix=PROCESSED_TEXT_PREFIX
+    )
 
-    for i, chunk in enumerate(chunks):
-        print(f"Generating embedding for chunk {i + 1}/{len(chunks)}")
+    files = []
 
-        embedding = get_embedding(chunk)
-        embeddings.append(embedding)
+    for obj in response.get("Contents", []):
+        key = obj["Key"]
+        if key.endswith(".txt"):
+            files.append(key)
 
-        metadata.append({
-            "chunk_id": i,
-            "document_id": document_id,
-            "object_key": object_key,
-            "chunk_text": chunk
-        })
+    return files
 
-    embedding_matrix = np.array(embeddings).astype("float32")
+
+def read_s3_text_file(key):
+    response = s3.get_object(
+        Bucket=S3_BUCKET_NAME,
+        Key=key
+    )
+
+    return response["Body"].read().decode("utf-8")
+
+
+def build_faiss_index():
+    all_embeddings = []
+    all_metadata = []
+
+    text_files = list_processed_text_files()
+
+    print(f"Found {len(text_files)} processed text files")
+
+    for text_key in text_files:
+        print(f"Reading {text_key}")
+
+        text = read_s3_text_file(text_key)
+        chunks = chunk_text(text)
+
+        object_key = text_key.replace(PROCESSED_TEXT_PREFIX, "").replace(".txt", ".pdf")
+        document_id = object_key
+
+        for i, chunk in enumerate(chunks):
+            print(f"Embedding {text_key} chunk {i + 1}/{len(chunks)}")
+
+            embedding = get_embedding(chunk)
+            all_embeddings.append(embedding)
+
+            all_metadata.append({
+                "chunk_id": len(all_metadata),
+                "document_id": document_id,
+                "object_key": object_key,
+                "source_text_key": text_key,
+                "chunk_number": i,
+                "chunk_text": chunk
+            })
+
+    if not all_embeddings:
+        raise ValueError("No processed text found. Upload/process a document first.")
+
+    embedding_matrix = np.array(all_embeddings).astype("float32")
 
     dimension = embedding_matrix.shape[1]
     index = faiss.IndexFlatL2(dimension)
     index.add(embedding_matrix)
 
-    return index, metadata
+    return index, all_metadata
 
 
 def save_and_upload(index, metadata):
@@ -85,35 +128,18 @@ def save_and_upload(index, metadata):
     with open(METADATA_PATH, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
-    s3.upload_file(str(FAISS_INDEX_PATH), S3_BUCKET_NAME, "faiss_index/index.faiss")
-    s3.upload_file(str(METADATA_PATH), S3_BUCKET_NAME, "faiss_index/metadata.json")
+    s3.upload_file(str(FAISS_INDEX_PATH), S3_BUCKET_NAME, FAISS_INDEX_S3_KEY)
+    s3.upload_file(str(METADATA_PATH), S3_BUCKET_NAME, METADATA_S3_KEY)
 
-    print("FAISS index and metadata uploaded to S3.")
+    print("FAISS index uploaded to S3")
+    print("Metadata uploaded to S3")
 
 
 def main():
-    sample_text = """
-    AWS Serverless Document Processing Project.
-
-    This document explains a serverless, event-driven AWS architecture using
-    Amazon S3, AWS Lambda, Amazon SQS, Amazon DynamoDB, Amazon SNS,
-    Amazon Textract, Amazon Bedrock, and FAISS.
-
-    The system extracts text from uploaded documents, generates summaries,
-    classifies documents, creates vector embeddings, and supports retrieval
-    augmented generation using a FAISS vector index.
-    """
-
-    document_id = "local-test-document"
-    object_key = "sample-document.pdf"
-
-    chunks = chunk_text(sample_text)
-
-    print(f"Created {len(chunks)} chunks")
-
-    index, metadata = build_faiss_index(chunks, document_id, object_key)
-
+    index, metadata = build_faiss_index()
     save_and_upload(index, metadata)
+
+    print(f"Indexed {len(metadata)} chunks successfully")
 
 
 if __name__ == "__main__":
