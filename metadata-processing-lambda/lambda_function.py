@@ -12,6 +12,9 @@ sns = boto3.client("sns")
 textract = boto3.client("textract")
 bedrock = boto3.client("bedrock-runtime")
 
+# For phase-3
+s3 = boto3.client("s3")
+
 TABLE_NAME = os.environ["TABLE_NAME"]
 SNS_TOPIC_ARN = os.environ["SNS_TOPIC_ARN"]
 
@@ -46,6 +49,20 @@ def lambda_handler(event, context):
 
         print("Extracted text from Textract:")
         print(extracted_text)
+
+        # For phase-3
+        processed_text_key = f"processed_text/{message['object_key'].rsplit('.', 1)[0]}.txt"
+
+        s3.put_object(
+            Bucket=message["bucket_name"],
+            Key=processed_text_key,
+            Body=extracted_text.encode("utf-8"),
+            ContentType="text/plain"
+        )
+
+        print("Extracted text saved to S3:")
+        print(processed_text_key)
+        
 
         prompt = f"""
         Analyze the following document.
