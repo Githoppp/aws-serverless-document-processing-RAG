@@ -74,22 +74,94 @@ def search_faiss(question, top_k=3):
 
     return results
 
+def generate_answer(question, retrieved_chunks):
+    context = "\n\n".join(
+        [chunk["chunk_text"] for chunk in retrieved_chunks]
+    )
+
+    prompt = f"""
+    You are a helpful assistant answering questions from uploaded documents.
+
+    Use ONLY the context below.
+
+    Context:
+    {context}
+
+    Question:
+    {question}
+
+    If the answer is not present in the context, say:
+    'I could not find the answer in the uploaded documents.'
+
+    Answer:
+    """
+
+    response = bedrock.converse(
+        modelId="us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "text": prompt
+                    }
+                ]
+            }
+        ]
+    )
+
+    answer = response["output"]["message"]["content"][0]["text"]
+
+    return answer
+
+
+# def main():
+#     question = input("Ask a question about your documents: ")
+
+#     results = search_faiss(question)
+
+#     print("\nTop matching chunks:\n")
+
+#     for i, result in enumerate(results, start=1):
+#         print(f"Result {i}")
+#         print(f"Source: {result['object_key']}")
+#         print(f"Chunk number: {result['chunk_number']}")
+#         print(f"Distance: {result['distance']}")
+#         print("Chunk text:")
+#         print(result["chunk_text"])
+#         print("-" * 80)
 
 def main():
-    question = input("Ask a question about your documents: ")
+    question = input(
+        "Ask a question about your documents: "
+    )
 
-    results = search_faiss(question)
+    results = search_faiss(
+        question,
+        top_k=3
+    )
 
-    print("\nTop matching chunks:\n")
+    print("\nRetrieved Chunks:\n")
 
     for i, result in enumerate(results, start=1):
         print(f"Result {i}")
-        print(f"Source: {result['object_key']}")
-        print(f"Chunk number: {result['chunk_number']}")
-        print(f"Distance: {result['distance']}")
-        print("Chunk text:")
-        print(result["chunk_text"])
+        print(
+            f"Source: {result['object_key']}"
+        )
+        print(
+            f"Chunk number: {result['chunk_number']}"
+        )
         print("-" * 80)
+
+    print("\nGenerating Final Answer...\n")
+
+    answer = generate_answer(
+        question,
+        results
+    )
+
+    print("ANSWER:\n")
+    print(answer)
 
 
 if __name__ == "__main__":
