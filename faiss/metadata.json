@@ -1,0 +1,14 @@
+[
+  {
+    "chunk_id": 0,
+    "document_id": "local-test-document",
+    "object_key": "sample-document.pdf",
+    "chunk_text": "AWS Serverless Document Processing Project.\n\n    This document explains a serverless, event-driven AWS architecture using\n    Amazon S3, AWS Lambda, Amazon SQS, Amazon DynamoDB, Amazon SNS,\n    Amazon Textract, Amazon Bedrock, and FAISS.\n\n    The system extracts text from uploaded documents, generates summaries,\n    classifies documents, creates vector embeddings, and supports retrieval\n    augmented generation using a FAISS vector index."
+  },
+  {
+    "chunk_id": 1,
+    "document_id": "local-test-document",
+    "object_key": "sample-document.pdf",
+    "chunk_text": "ugmented generation using a FAISS vector index."
+  }
+]
